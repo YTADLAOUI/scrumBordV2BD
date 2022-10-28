@@ -20,6 +20,7 @@
 
     function saveTask()
     {
+        include('database.php');
         //CODE HERE
         $Title       = $_POST["task-title"];
         $Type        = $_POST["task-type"];
@@ -27,7 +28,8 @@
         $Status      = $_POST["task-status"];
         $Date        = $_POST["task-date"];
         $description = $_POST["task-description"];
-        var_dump("serverName");
+        $sqlconn ="INSERT INTO `tasks` ( `title`, `task_datetime`, `description`, `type_id`, `priority_id`, `status_id`) VALUES ('$Title','$Date','$description','$Type','$Priority','$Status')";
+        $res = mysqli_query($conn,$sqlconn);
         //SQL INSERT
         $_SESSION['message'] = "Task has been added successfully !";
 		header('location: index.php');
