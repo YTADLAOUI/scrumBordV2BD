@@ -19,9 +19,9 @@
 </head>
 <body>
 	<!-- BEGIN #loader -->
-	<div id="loader" class="app-loader">
+	<!-- <div id="loader" class="app-loader">
 		<span class="spinner"></span>
-	</div>
+	</div> -->
 	<!-- END #loader -->
 
 	<!-- BEGIN #app -->
@@ -266,7 +266,9 @@
 						<div class="list-group list-group-flush rounded-bottom overflow-hidden panel-body p-0" id="to-do-tasks">
 							<!-- TO DO TASKS HERE -->
 							<?php
-								//PHP CODE HERE
+								//PHP CODE HEREgetTasks(1);
+								getTasks(1);
+
 								//DATA FROM getTasks() FUNCTION
 							?>
 						</div>
@@ -287,7 +289,9 @@
 							<!-- IN PROGRESS TASKS HERE -->
 							<?php
 								//PHP CODE HERE
+								getTasks(2);
 								//DATA FROM getTasks() FUNCTION
+								
 							?>
 						</div>
 					</div>
@@ -307,6 +311,8 @@
 							<!-- DONE TASKS HERE -->
 							<?php
 								//PHP CODE HERE
+								getTasks(3);
+								
 								//DATA FROM getTasks() FUNCTION
 							?>
 						</div>
