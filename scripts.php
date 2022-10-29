@@ -9,15 +9,19 @@
     if(isset($_POST['update']))      updateTask();
     if(isset($_POST['delete']))      deleteTask();
     
-
+    $i =0;
     function getTasks($Var)
     {
         include('database.php');
         //CODE HERE
-        $QUERY="SELECT * FROM  `tasks` WHERE tasks.status_id =$Var" ;
-        $res = mysqli_query($conn,$QUERY);
-
-        while($row =mysqli_fetch_assoc($res)){
+        // $QUERY="SELECT * FROM  `tasks` WHERE tasks.status_id =$Var" ;
+        $QUERY = "SELECT t.*,st.name,tp.name,pt.name FROM tasks t,statues st,types tp,priorities pt WHERE st.id = t.status_id AND tp.id = t.type_id AND pt.id = t.priority_id AND t.status_id = $Var 
+         ORDER BY id ASC";
+        $res = mysqli_query($conn,$QUERY);      
+            global $i;
+        while($row =mysqli_fetch_row($res)){
+           // var_dump($row);
+           $i++;
             echo  "
             <button 
             
@@ -26,20 +30,20 @@
                 <i class='bi bi-check-circle h4 text-green '></i> 
             </div>
                 <div class='text-start  mt-1'>
-                <div class='fw-bold'>".$row['title']."</div>
+                <div class='fw-bold'>".$row[1]."</div>
                 <div class=''>
-                    <div class=''>{i+1} created in ".$row['']."</div>
-                    <div class='' >{tasks[i].description} </div>
+                    <div class=''> #$i created in ".$row[2]."</div>
+                    <div class='' >".$row[3]."</div>
                 </div>
                      <div class='h5'>
-                         <span class='btn btn-sm btn-primary p-0 px-1 '>{tasks[i].priority}</span>
-                         <span class='btn btn-sm btn-light text-black p-0 px-1 '>{tasks[i].type}</span>
+                         <span class='btn btn-sm btn-primary p-0 px-1 '>".$row[8]."</span>
+                         <span class='btn btn-sm btn-light text-black p-0 px-1 '>".$row[9]."</span>
                         
                     </div>
                </div>
             </button>
             ";
-                             
+                           
         }
 
         //SQL SELECT
