@@ -23,21 +23,22 @@
            // var_dump($row);
            $i++;
             echo  "
-            <button 
-            
-             class='w-100 border-0 d-flex bg-white border-bottom '>
+            <button  
+            onclick=editTask({$row[0]})
+            data-bs-toggle='modal' data-bs-target='#modal-task'
+             class='w-100 border-0 d-flex bg-white border-bottom 'id ='test'>
             <div class='col-1 mt-1'>
                 <i class='bi bi-check-circle h4 text-green '></i> 
-            </div>
+            </div>                                         
                 <div class='text-start  mt-1'>
-                <div class='fw-bold'>".$row[1]."</div>
+                <div class='fw-bold' data-title ='".$row[1]."' id ='{$row[0]}title'>{$row[1]}</div>
                 <div class=''>
-                    <div class=''> #$i created in ".$row[2]."</div>
-                    <div class='' >".$row[3]."</div>
+                    <div data-date='".$row[2]."' id ='{$row[0]}date' class=''> #$i created in ".$row[2]."</div>
+                    <div class='' data-description='".$row[3]."' id='{$row[0]}description' >".$row[3]."</div>
                 </div>
                      <div class='h5'>
-                         <span class='btn btn-sm btn-primary p-0 px-1 '>".$row[8]."</span>
-                         <span class='btn btn-sm btn-light text-black p-0 px-1 '>".$row[9]."</span>
+                         <span class='btn btn-sm btn-primary p-0 px-1 ' data-type={$row[8]} id = '{$row[0]}type'>".$row[8]."</span>
+                         <span class='btn btn-sm btn-light text-black p-0 px-1 ' data-prority={$row[9]} id = '{$row[0]}Priority'>".$row[9]."</span>
                         
                     </div>
                </div>
@@ -71,7 +72,8 @@
     function updateTask()
     {
         //CODE HERE
-        
+        $_POST["task-title"]=$Title ;
+        getTasks($Var);
         //SQL UPDATE
         $_SESSION['message'] = "Task has been updated successfully !";
 		header('location: index.php');
@@ -87,3 +89,4 @@
     }
 
 ?>
+<!-- <script src="scripts.js"></script> -->

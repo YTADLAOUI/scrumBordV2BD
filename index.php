@@ -380,7 +380,7 @@
 							</div>
 							<div class="mb-3">
 								<label class="form-label">Date</label>
-								<input type="datetime-local" class="form-control" name="task-date" id="task_date"/>
+								<input type="date" class="form-control" name="task-date" id="task_date"/>
 							</div>
 							<div class="mb-0">
 								<label class="form-label">Description</label>
