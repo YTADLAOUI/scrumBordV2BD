@@ -112,5 +112,13 @@
 		header('location: index.php');
     }
 
+    function contuer($ele){
+        include('database.php');
+        $cont="SELECT * FROM tasks WHERE status_id= '$ele'";
+        $qry=mysqli_query($conn,$cont);
+        $count1=mysqli_num_rows($qry);
+        return $count1;
+    }
+
 ?>
 <!-- <script src="scripts.js"></script> -->
