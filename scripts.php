@@ -73,6 +73,7 @@
     {
         include('database.php');
         //CODE HERE
+        
         $hid=$_POST["task_id"] ;
         $Title       = $_POST["task-title"];
         $Type        = $_POST["task-type"];
@@ -80,7 +81,7 @@
         $Status      = $_POST["task-status"];
         $Date        = $_POST["task-date"];
         $description = $_POST["task-description"];
-       $upd =" UPDATE `tasks` SET `title`='$Title',`task_datetime`='$Date',`description`='$description',`type_id`='$Type',`priority_id`='$Priority',`status_id`='$Status' WHERE id=$hid";
+       $upd =" UPDATE `tasks` SET `title`='$Title',`task_datetime`='$Date',`description`='$description',`type_id`='$Type',`priority_id`='$Priority',`status_id`='$Status' WHERE id=$hid ORDER BY task_datetime ASC";
         //SQL UPDATE
         mysqli_query($conn,$upd);
         $_SESSION['message'] = "Task has been updated successfully !";
@@ -89,9 +90,12 @@
 
     function deleteTask()
     {
+        $hid=$_POST["task_id"];
+        include('database.php');
         //CODE HERE
-
+       $del=" DELETE FROM `tasks` WHERE id=$hid ";
         //SQL DELETE
+        mysqli_query($conn,$del);
         $_SESSION['message'] = "Task has been deleted successfully !";
 		header('location: index.php');
     }

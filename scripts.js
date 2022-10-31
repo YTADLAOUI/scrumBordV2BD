@@ -22,11 +22,12 @@ function editTask(id) {
     Title.value = document.getElementById(id+"title").getAttribute("data-title");
     date.value = document.getElementById(id+"date").getAttribute("data-date");
     description.value = document.getElementById(id+"description").getAttribute("data-description");
-    if (document.getElementById(id+"type").getAttribute("data-type")== 1){
+    if (document.getElementById(id+"type").getAttribute("data-type")== 1)
+        {
         document.querySelector('#task-type-feature').checked = true;
-}else{
+        }else{
    document.querySelector('#task-type-bug').checked = true;
-}
+             }
 
    priority.value= document.getElementById(id+'priority').getAttribute("data-priority");
    statu.value= document.getElementById(id+'priority').getAttribute('data-status');
