@@ -37,8 +37,8 @@
                     <div class='' data-description='".$row[3]."' id='{$row[0]}description' >".$row[3]."</div>
                 </div>
                      <div class='h5'>
-                         <span class='btn btn-sm btn-primary p-0 px-1 ' data-type={$row[8]} id = '{$row[0]}type'>".$row[8]."</span>
-                         <span class='btn btn-sm btn-light text-black p-0 px-1 ' data-prority={$row[9]} id = '{$row[0]}Priority'>".$row[9]."</span>
+                         <span class='btn btn-sm btn-primary p-0 px-1 ' data-type={$row[4]} id ='{$row[0]}type'>".$row[8]."</span>
+                         <span class='btn btn-sm btn-light text-black p-0 px-1' data-status='$row[6]' data-priority='$row[5]' id='{$row[0]}priority'>".$row[9]."</span>
                         
                     </div>
                </div>
@@ -71,10 +71,18 @@
 
     function updateTask()
     {
+        include('database.php');
         //CODE HERE
-        $_POST["task-title"]=$Title ;
-        getTasks($Var);
+        $hid=$_POST["task_id"] ;
+        $Title       = $_POST["task-title"];
+        $Type        = $_POST["task-type"];
+        $Priority    = $_POST["task-priority"];
+        $Status      = $_POST["task-status"];
+        $Date        = $_POST["task-date"];
+        $description = $_POST["task-description"];
+       $upd =" UPDATE `tasks` SET `title`='$Title',`task_datetime`='$Date',`description`='$description',`type_id`='$Type',`priority_id`='$Priority',`status_id`='$Status' WHERE id=$hid";
         //SQL UPDATE
+        mysqli_query($conn,$upd);
         $_SESSION['message'] = "Task has been updated successfully !";
 		header('location: index.php');
     }

@@ -340,7 +340,7 @@
 					</div>
 					<div class="modal-body">
 							<!-- This Input Allows Storing Task Index  -->
-							<input type="hidden" id="task-id">
+							<input type="hidden" name="task_id" id="task-id">
 							<div class="mb-3">
 								<label class="form-label">Title</label>
 								<input type="text" name ="task-title" class="form-control" id="task_title"/>
@@ -362,17 +362,17 @@
 							<div class="mb-3">
 								<label class="form-label">Priority</label>
 								<select class="form-select" name = "task-priority" id="task_priority">
-									<option value="">Please select</option>
-									<option value="1">Low</option>
+									<option value="5">Please select</option>
+									<option value="3">Low</option>
 									<option value="2">Medium</option>
-									<option value="3">High</option>
+									<option value="1">High</option>
 									<option value="4">Critical</option>
 								</select>
 							</div>
 							<div class="mb-3">
 								<label class="form-label">Status</label>
 								<select class="form-select" name ="task-status" id="task_status">
-									<option value="">Please select</option>
+									<option value="4">Please select</option>
 									<option value="1">To Do</option>
 									<option value="2">In Progress</option>
 									<option value="3">Done</option>
@@ -405,7 +405,7 @@
 	<!-- ================== END core-js ================== -->
 	<script src="scripts.js"></script>
 
-	<script>
+	<script >
 		//reloadTasks();
 	</script>
 </body>
