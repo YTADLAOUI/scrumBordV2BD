@@ -15,6 +15,18 @@
         include('database.php');
         //CODE HERE
         // $QUERY="SELECT * FROM  `tasks` WHERE tasks.status_id =$Var" ;
+        switch ($Var) {
+            case '1':
+              $icon=    'bi bi-question-circle h4 text-dark';
+                break;
+            case '2':
+                $icon=  'spinner-border text-success spinner-border-sm';
+                break;
+            default:
+             $icon=  'bi bi-check-circle h4 text-green';
+                break;
+            }
+
         $QUERY = "SELECT t.*,st.name,tp.name,pt.name FROM tasks t,statues st,types tp,priorities pt WHERE st.id = t.status_id AND tp.id = t.type_id AND pt.id = t.priority_id AND t.status_id = $Var 
          ORDER BY id ASC";
         $res = mysqli_query($conn,$QUERY);      
@@ -28,7 +40,7 @@
             data-bs-toggle='modal' data-bs-target='#modal-task'
              class='w-100 border-0 d-flex bg-white border-bottom 'id ='test'>
             <div class='col-1 mt-1'>
-                <i class='bi bi-check-circle h4 text-green '></i> 
+                <i class='$icon'></i> 
             </div>                                         
                 <div class='text-start  mt-1'>
                 <div class='fw-bold' data-title ='".$row[1]."' id ='{$row[0]}title'>{$row[1]}</div>
