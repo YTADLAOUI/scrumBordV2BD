@@ -4,7 +4,7 @@
     $servername = "localhost";
     $user_Name  = "root";
     $password   = "";
-    $dbname     ="tasks";
+    $dbname     ="scrambordv2";
     
     $conn = mysqli_connect($servername,$user_Name,$password,$dbname);
 
