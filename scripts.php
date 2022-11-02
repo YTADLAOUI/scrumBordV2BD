@@ -27,16 +27,18 @@
                 break;
             }
 
-        $QUERY = "SELECT t.*,st.name,tp.name,pt.name FROM tasks t,statues st,types tp,priorities pt WHERE st.id = t.status_id AND tp.id = t.type_id AND pt.id = t.priority_id AND t.status_id = $Var 
+        $QUERY = "SELECT t.*,st.name,tp.name,pt.name FROM tasks t JOIN statues st JOIN types tp JOIN priorities pt ON st.id = t.status_id AND tp.id = t.type_id AND pt.id = t.priority_id WHERE t.status_id = $Var 
          ORDER BY id ASC";
         $res = mysqli_query($conn,$QUERY);      
             global $i;
+            
         while($row =mysqli_fetch_row($res)){
-           // var_dump($row);
+            
+            //var_dump($row[1]);
            $i++;
             echo  "
             <button  
-            onclick=editTask({$row[0]})
+            onclick=editTask($row[0])
             data-bs-toggle='modal' data-bs-target='#modal-task'
              class='w-100 border-0 d-flex bg-white border-bottom 'id ='test'>
             <div class='col-1 mt-1'>
@@ -49,7 +51,7 @@
                     <div class='' data-description='".$row[3]."' id='{$row[0]}description' >".$row[3]."</div>
                 </div>
                      <div class='h5'>
-                         <span class='btn btn-sm btn-primary p-0 px-1 ' data-type={$row[4]} id ='{$row[0]}type'>".$row[8]."</span>
+                         <span class='btn btn-sm btn-primary p-0 px-1 ' data-type='$row[4]' id ='{$row[0]}type'>".$row[8]."</span>
                          <span class='btn btn-sm btn-light text-black p-0 px-1' data-status='$row[6]' data-priority='$row[5]' id='{$row[0]}priority'>".$row[9]."</span>
                         
                     </div>
