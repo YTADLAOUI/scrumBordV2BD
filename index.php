@@ -344,7 +344,7 @@
 							<input type="hidden" name="task_id" id="task-id">
 							<div class="mb-3">
 								<label class="form-label">Title</label>
-								<input type="text" name ="task-title" class="form-control" id="task_title"/>
+								<input type="text" name ="task-title" class="form-control" id="task_title" required/>
 							</div>
 							<div class="mb-3">
 								<label class="form-label">Type</label>
@@ -385,7 +385,7 @@
 							</div>
 							<div class="mb-0">
 								<label class="form-label">Description</label>
-								<textarea class="form-control" rows="10" name="task-description" id="task_description"></textarea>
+								<textarea class="form-control" rows="10" name="task-description" id="task_description" required></textarea>
 							</div>
 						
 					</div>
